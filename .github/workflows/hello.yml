@@ -17,3 +17,6 @@ jobs:
       - run: echo "Hash of workflow files ${{ env.HASH }}"
         env:
           HASH: ${{ hashFiles('.github/workflows/*.yml') }}
+      
+      - run: echo "run_id contains 1"
+        if: ${{ contains(github.run_id, '1') }}
