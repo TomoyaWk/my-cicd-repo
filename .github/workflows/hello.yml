@@ -6,9 +6,11 @@ jobs:
     env:
       BRANCH: main
       USERNAME: ${{ vars.USERNAME }}
+      HASH: ${{ hashFiles('.github/workflows/*.yml') }}
     steps:
       - run: echo "Hello, ${BRANCH}!"
       - uses: actions/checkout@v4
         with:
           ref: ${{env.BRANCH}}
       - run: echo "${USERNAME}"
+      - run: echo "Hash of workflow files: ${HASH}"
