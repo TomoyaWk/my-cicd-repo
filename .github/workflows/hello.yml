@@ -3,7 +3,10 @@ on: push
 jobs:
   hello:
     runs-on: ubuntu-latest
+    env:
+      BRANCH: main
     steps:
-      - run: echo "Hello, World!"
+      - run: echo "Hello, ${BRANCH}!"
       - uses: actions/checkout@v4
-      
+        with:
+          ref: ${{env.BRANCH}}
